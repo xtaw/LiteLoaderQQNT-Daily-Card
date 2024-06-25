@@ -1,0 +1,51 @@
+<style>
+    .daily-card-friend {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        gap: 16px;
+    }
+
+    .daily-card-friend-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 24px;
+    }
+
+    .daily-card-log {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        gap: 16px;
+    }
+
+    .daily-card-log-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 24px;
+    }
+
+    .daily-card-log-result-list {
+        margin-top: 8px;
+    }
+</style>
+
+<setting-section data-title="配置">
+    <setting-panel>
+        <setting-list id="daily-card-list" data-title="抽取列表" is-collapsible data-direction="column">
+        </setting-list>
+    </setting-panel>
+</setting-section>
+
+<setting-section data-title="日志">
+    <setting-panel>
+        <setting-list data-direction="column">
+            <setting-item>
+                <setting-text>日期</setting-text>
+                <input id="daily-card-log-date" type="date">
+            </setting-item>
+        </setting-list>
+        <setting-list id="daily-card-log-list" data-title="抽取记录" is-collapsible data-direction="column">
+        </setting-list>
+    </setting-panel>
+</setting-section>
