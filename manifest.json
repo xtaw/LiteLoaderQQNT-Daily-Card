@@ -4,7 +4,7 @@
     "name": "Daily Card",
     "slug": "daily_card",
     "description": "一个用于自动抽取每日幸运字符的插件",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "authors": [{
         "name": "xtaw",
         "link": "https://github.com/xtaw"

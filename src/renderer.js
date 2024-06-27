@@ -62,8 +62,12 @@ async function drawCards() {
 if (location.hash === "#/blank") {
     navigation.addEventListener("navigatesuccess", async () => {
         if (location.hash.startsWith('#/main')) {
-            await init();
-            drawCards();
+            const listener = euphonyNative.subscribeEvent('onBuddyListChange', async () => {
+                euphonyNative.unsubscribeEvent(listener);
+                await init();
+                drawCards();
+            });
+            euphonyNative.invokeNative('ns-ntApi', 'nodeIKernelBuddyService/getBuddyList', false, { force_update: true });
         }
     }, {
         once: true
