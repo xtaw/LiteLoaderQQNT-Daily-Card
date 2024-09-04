@@ -15,6 +15,15 @@ class Client {
     }
 
     /**
+     * 获取客户端登录账号的 **uid**。
+     * 
+     * @returns { String } 客户端登录账号的 **uid**。 
+     */
+    static getUid() {
+        return app?.__vue_app__?.config?.globalProperties?.$store?.state?.common_Auth?.authData?.uid;
+    }
+
+    /**
      * 获取客户端好友列表。
      * 
      * @returns { Array<Friend> } 客户端好友列表。
@@ -39,7 +48,7 @@ class Client {
      * @returns { ClientKey | Object } 客户端登录账号的 clientKey。
      */
     static async getClientKey() {
-        const result = await euphonyInternal.getClientKey();
+        const result = await euphonyNative.invokeNative('ns-ntApi', 'nodeIKernelTicketService/forceFetchClientKey', false, { url: '' });
         if (result.result == 0) {
             return new ClientKey(result.clientKey, result.keyIndex, result.expireTime, result.url);
         }
@@ -100,7 +109,7 @@ class Client {
      * @returns { Boolean } 自身是否为 qq 超级会员。
      */
     static isSvip() {
-        return app?.__vue_app__?.config?.globalProperties?.$store?.state?.common_Auth?.selfProfileInfo?.svipFlag;
+        return app?.__vue_app__?.config?.globalProperties?.$store?.state?.common_Contact_buddy?.buddyMap?.[Client.getUid()].vasInfo?.svipFlag;
     }
 
 }

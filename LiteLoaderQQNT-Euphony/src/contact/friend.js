@@ -56,7 +56,7 @@ class Friend extends Contact {
      * @returns { String } 昵称。
      */
     getNick() {
-        return this.getNative()?.nick;
+        return this.getNative()?.coreInfo?.nick;
     }
 
     /**
@@ -65,7 +65,7 @@ class Friend extends Contact {
      * @returns { String } 好友备注。
      */
     getRemark() {
-        return this.getNative()?.remark;
+        return this.getNative()?.coreInfo?.remark;
     }
 
 }
