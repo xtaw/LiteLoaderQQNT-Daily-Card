@@ -59,16 +59,10 @@ async function drawCards() {
     }
 }
 
-if (location.hash === "#/blank") {
-    navigation.addEventListener("navigatesuccess", async () => {
-        if (location.hash.startsWith('#/main')) {
-            await euphonyNative.invokeNative('ns-ntApi', 'nodeIKernelBuddyService/getBuddyList', false, { force_update: true });
-			await init();
-			drawCards();
-        }
-    }, {
-        once: true
-    });
+if (location.hash.startsWith('#/main')) {
+    await euphonyNative.invokeNative('ns-ntApi', 'nodeIKernelBuddyService/getBuddyList', false, { force_update: true });
+    await init();
+    drawCards();
 }
 
 export const onSettingWindowCreated = async view => {
